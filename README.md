@@ -67,8 +67,8 @@ mern-chat-app/
 
 ### 1️⃣ Clone the repo
 ```bash
-git clone https://github.com/your-username/mern-chat-app.git
-cd mern-chat-app
+git clone https://github.com/your-username/our-chat-app.git
+cd our-chat-app
 ```
 ### 2️⃣ Setup backend
 ```
