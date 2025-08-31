@@ -14,34 +14,54 @@ export default function Chat() {
   const [contacts, setContacts] = useState([]);
   const [currentChat, setCurrentChat] = useState(undefined);
   const [currentUser, setCurrentUser] = useState(undefined);
-  useEffect(async () => {
-    if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
+
+  // eslint-disable-next-line
+  useEffect(() => {
+  const checkUser = async () => {
+    const storedUser = localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY);
+    if (!storedUser) {
       navigate("/login");
     } else {
-      setCurrentUser(
-        await JSON.parse(
-          localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
-        )
-      );
+      setCurrentUser(JSON.parse(storedUser));
     }
-  }, []);
-  useEffect(() => {
-    if (currentUser) {
-      socket.current = io(host);
-      socket.current.emit("add-user", currentUser._id);
-    }
-  }, [currentUser]);
+  };
+  checkUser();
+}, [navigate]);
 
-  useEffect(async () => {
-    if (currentUser) {
-      if (currentUser.isAvatarImageSet) {
-        const data = await axios.get(`${allUsersRoute}/${currentUser._id}`);
-        setContacts(data.data);
-      } else {
-        navigate("/setAvatar");
+// eslint-disable-next-line
+useEffect(() => {
+  if (!currentUser) return;
+
+  socket.current = io(host);
+  socket.current.emit("add-user", currentUser._id);
+
+  return () => {
+    socket.current.disconnect();
+  };
+}, [currentUser]);
+
+// eslint-disable-next-line
+useEffect(() => {
+  const fetchContacts = async () => {
+    if (!currentUser) return;
+
+    if (currentUser.isAvatarImageSet) {
+      try {
+        const { data } = await axios.get(`${allUsersRoute}/${currentUser._id}`);
+        setContacts(data);
+      } catch (err) {
+        console.error("Error fetching contacts:", err);
       }
+    } else {
+      navigate("/setAvatar");
     }
-  }, [currentUser]);
+  };
+
+  fetchContacts();
+}, [currentUser, navigate]);
+
+
+
   const handleChatChange = (chat) => {
     setCurrentChat(chat);
   };
