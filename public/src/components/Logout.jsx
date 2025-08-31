@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { BiPowerOff } from "react-icons/bi";
 import styled from "styled-components";
 import axios from "axios";
 import { logoutRoute } from "../utils/APIRoutes";
@@ -10,11 +9,14 @@ import { useState } from "react";
 export default function Logout() {
   const navigate = useNavigate();
   const [user, setuser] = useState("");
-  useEffect(async () => {
+  useEffect(() => {
+    const fetch = async () => {
       const userData = await JSON.parse(
         localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
       );
       setuser(userData);
+    };
+    fetch();
   }, []);
   
   const handleClick = async () => {
