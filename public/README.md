@@ -34,20 +34,30 @@ Users can register, log in, set an avatar, and chat in real-time with other user
 ---
 
 ## 📂 Project Structure
-project/
-│── client/ # React frontend
-│ ├── src/
-│ │ ├── pages/ # React pages (Login, Register, Chat, SetAvatar)
-│ │ ├── components/ # UI components (Logout, Contacts, etc.)
-│ │ └── utils/ # API routes
+
+mern-chat-app/
 │
-│── server/ # Node.js backend
-│ ├── models/ # Mongoose schemas
-│ ├── routes/ # Auth & Chat routes
-│ ├── controllers/
-│ └── index.js # Entry point
+├── client/                   # React frontend
+│   ├── public/               # Static files
+│   └── src/
+│       ├── assets/           # Images, icons
+│       ├── components/       # Reusable UI components (Contacts, Logout, etc.)
+│       ├── pages/            # Page components (Login, Register, Chat, SetAvatar)
+│       ├── utils/            # API routes and helpers
+│       ├── App.js            # Main app component
+│       └── index.js          # React entry point
 │
+├── server/                   # Node.js backend
+│   ├── controllers/          # Logic for handling requests
+│   ├── models/               # Mongoose schemas (User, Message)
+│   ├── routes/               # Express routes (auth, chat)
+│   ├── utils/                # Utility functions (JWT, validation)
+│   └── index.js              # Server entry point (Express + Socket.IO setup)
+│
+├── .gitignore
+├── package.json              # Root package (if using workspaces, else client/server each have one)
 └── README.md
+
 
 ---
 
@@ -57,5 +67,36 @@ project/
 ```bash
 git clone https://github.com/your-username/mern-chat-app.git
 cd mern-chat-app
+
+2️⃣ Setup backend
+cd server
+npm install
+
+
+Create a .env file inside server/:
+
+MONGO_URL=your_mongodb_connection_string
+PORT=5000
+JWT_SECRET=your_secret_key
+
+
+Run the backend:
+
+npm start
+
+3️⃣ Setup frontend
+cd client
+npm install
+
+
+Create a .env file inside client/:
+
+REACT_APP_LOCALHOST_KEY=chat-app-user
+REACT_APP_API_URL=http://localhost:5000
+
+
+Run the frontend:
+
+npm start
 
 
