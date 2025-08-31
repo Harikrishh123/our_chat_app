@@ -67,36 +67,41 @@ mern-chat-app/
 ```bash
 git clone https://github.com/your-username/mern-chat-app.git
 cd mern-chat-app
+```
 
-2️⃣ Setup backend
+###  2️⃣ Setup backend
+```
 cd server
 npm install
+```
 
-
-Create a .env file inside server/:
-
+## Create a .env file inside server/:
+```
 MONGO_URL=your_mongodb_connection_string
 PORT=5000
 JWT_SECRET=your_secret_key
+```
 
+## Run the backend:
 
-Run the backend:
-
+```
 npm start
+```
 
-3️⃣ Setup frontend
+### 3️⃣ Setup frontend
+```
 cd client
 npm install
+```
 
-
-Create a .env file inside client/:
-
+## Create a .env file inside client/:
+```
 REACT_APP_LOCALHOST_KEY=chat-app-user
-REACT_APP_API_URL=http://localhost:5000
+```
 
+## Run the frontend:
 
-Run the frontend:
-
+```
 npm start
-
+```
 
