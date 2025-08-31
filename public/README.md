@@ -75,7 +75,7 @@ cd server
 npm install
 ```
 
-## Create a .env file inside server/:
+#### Create a .env file inside server/:
 ```
 MONGO_URL=your_mongodb_connection_string
 PORT=5000
@@ -94,12 +94,12 @@ cd client
 npm install
 ```
 
-## Create a .env file inside client/:
+#### Create a .env file inside client/:
 ```
 REACT_APP_LOCALHOST_KEY=chat-app-user
 ```
 
-## Run the frontend:
+#### Run the frontend:
 
 ```
 npm start
