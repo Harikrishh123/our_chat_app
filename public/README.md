@@ -11,7 +11,6 @@ Users can register, log in, set an avatar, and chat in real-time with other user
 - 🖼️ Set custom avatar images  
 - 💬 Real-time messaging with Socket.IO  
 - 📜 Message history stored in MongoDB  
-- 🟢 Online/Offline user tracking  
 - 🎨 Responsive UI using React + Styled Components  
 
 ---
@@ -34,7 +33,7 @@ Users can register, log in, set an avatar, and chat in real-time with other user
 ---
 
 ## 📂 Project Structure
-
+```
 mern-chat-app/
 │
 ├── client/                   # React frontend
@@ -57,8 +56,7 @@ mern-chat-app/
 ├── .gitignore
 ├── package.json              # Root package (if using workspaces, else client/server each have one)
 └── README.md
-
-
+```
 ---
 
 ## ⚡ Installation & Setup
@@ -82,7 +80,7 @@ PORT=5000
 JWT_SECRET=your_secret_key
 ```
 
-## Run the backend:
+#### Run the backend:
 
 ```
 npm start
