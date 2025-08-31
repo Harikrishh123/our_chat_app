@@ -15,13 +15,18 @@ const handleChatSelect = (contact, index) => {
     setOpen(false);           // close dropdown after selection
   };
   
-  useEffect(async () => {
+  useEffect(() => {
+    const fetch = async () => {
     const data = await JSON.parse(
       localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
     );
     setCurrentUserName(data.username);
     setCurrentUserImage(data.avatarImage);
+  };
+  fetch();
   }, []);
+
+
   const changeCurrentChat = (index, contact) => {
     setCurrentSelected(index);
     changeChat(contact);
